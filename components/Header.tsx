@@ -13,19 +13,21 @@ const Header = () => {
   
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+  
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
-      
+  
       const sections = ['home', 'about', 'projects', 'experience', 'contact'];
-      
+  
       for (const section of sections) {
         const element = document.getElementById(section);
         if (!element) continue;
-        
+  
         const rect = element.getBoundingClientRect();
         if (rect.top <= 150 && rect.bottom >= 150) {
           setActiveSection(section);
@@ -33,12 +35,13 @@ const Header = () => {
         }
       }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
 
   useEffect(() => {
     const sr = ScrollReveal({
@@ -86,6 +89,7 @@ const Header = () => {
   ];
 
   const scrollToSection = (id :any) => {
+    if (typeof window === 'undefined') return;
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
