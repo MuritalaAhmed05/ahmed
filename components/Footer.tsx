@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 import { Heart, Github, Linkedin, Twitter, Mail, ArrowUp, Code } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-// import { scrollAnimations } from '@/lib/animations';
+import { useScrollAnimations } from '@/lib/animations';
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  // useEffect(() => {
-  //   scrollAnimations();
-  // }, []);
+  useScrollAnimations();
+
 
   const scrollToTop = () => {
     if (typeof window === 'undefined') return;

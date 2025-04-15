@@ -6,7 +6,7 @@ import { useScrollAnimations } from '@/lib/animations';
 import Image from 'next/image';
 
 const HeroSection = () => {
-  useScrollAnimations();
+  // useScrollAnimations();
   return (
     <section 
       id="home" 

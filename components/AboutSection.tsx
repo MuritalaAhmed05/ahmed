@@ -6,8 +6,8 @@ import {
   Layers, Smartphone, Palette, Zap,
   User, Award, Clock, Briefcase
 } from 'lucide-react';
-// import { scrollAnimations } from '@/lib/animations';
 import Image from 'next/image';
+import { useScrollAnimations } from '@/lib/animations';
 
 const AboutSection = () => {
   const techStack = [
@@ -21,9 +21,8 @@ const AboutSection = () => {
     { name: 'Performance', icon: <Zap className="h-8 w-8" /> },
   ];
 
-  // useEffect(() => {
-  //     scrollAnimations();
-  //   }, []);
+  //  useScrollAnimations();
+ 
 
   return (
     <section id="about" className="py-12 md:py-12 bg-gradient-to-b from-accent/10 to-accent/30">

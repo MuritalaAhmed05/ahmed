@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight, Code } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-// import { scrollAnimations } from '@/lib/animations';
+import { useScrollAnimations } from '@/lib/animations';
+
 
 interface ProjectProps {
   title: string;
@@ -140,9 +141,8 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
 };
 
 const ProjectsSection = () => {
-  // useEffect(() => {
-  //   scrollAnimations();
-  // }, []);
+  useScrollAnimations();
+
   
   return (
     <section id="projects" className="py-20 md:py-32 bg-gray-50 dark:bg-black/30">

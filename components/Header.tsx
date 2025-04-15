@@ -140,7 +140,7 @@ const Header = () => {
       <div className="container flex items-center justify-between">
         <a 
           href="#home" 
-          className="text-xl sm:text-2xl font-bold text-primary dark:text-orange-400 nav-logo"
+          className="text-xl sm:text-2xl font-bold text-primary dark:text-orange-400"
         >
           <span className="sr-only">Homepage</span>
           &lt;Ahmed is a Web Dev/&gt;
@@ -170,13 +170,16 @@ const Header = () => {
           <ModeToggle/>
         </nav>
 
-        <button
-          className="mobile-menu md:hidden text-foreground dark:text-gray-200"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+        <ModeToggle/> 
+          <button
+            className="mobile-menu md:hidden text-foreground dark:text-gray-200 "
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {mobileMenuOpen && (
