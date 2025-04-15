@@ -2,15 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from 'lucide-react';
-// import ScrollReveal from 'scrollreveal';
 import { ModeToggle } from './toggleBtn';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-
-  
+  const [scrollRevealInitialized, setScrollRevealInitialized] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -41,44 +39,59 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
 
-  // useEffect(() => {
-  //   const sr = ScrollReveal({
-  //     origin: 'top',
-  //     distance: '20px',
-  //     duration: 800,
-  //     delay: 100,
-  //     reset: false
-  //   });
+  useEffect(() => {
+    if (typeof window === 'undefined' || scrollRevealInitialized) return;
 
-  //   sr.reveal('.nav-logo', { 
-  //     delay: 200 
-  //   });
-    
-  //   sr.reveal('.nav-item', { 
-  //     interval: 100 
-  //   });
-    
-  //   sr.reveal('.mobile-menu', { 
-  //     origin: 'right',
-  //     distance: '40px'
-  //   });
-    
-  //   return () => sr.destroy();
-  // }, []);
+    const initializeScrollReveal = async () => {
+      const ScrollReveal = (await import('scrollreveal')).default;
+      const sr = ScrollReveal({
+        origin: 'top',
+        distance: '20px',
+        duration: 800,
+        delay: 100,
+        reset: false
+      });
 
-  // useEffect(() => {
-  //   if (mobileMenuOpen) {
-  //     const sr = ScrollReveal();
-  //     sr.reveal('.mobile-nav-item', { 
-  //       origin: 'right', 
-  //       distance: '20px', 
-  //       duration: 500, 
-  //       interval: 100 
-  //     });
-  //   }
-  // }, [mobileMenuOpen]);
+      sr.reveal('.nav-logo', { 
+        delay: 200 
+      });
+      
+      sr.reveal('.nav-item', { 
+        interval: 100 
+      });
+      
+      sr.reveal('.mobile-menu', { 
+        origin: 'right',
+        distance: '40px'
+      });
+
+      setScrollRevealInitialized(true);
+      
+      return () => sr.destroy();
+    };
+
+    initializeScrollReveal();
+  }, [scrollRevealInitialized]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !mobileMenuOpen || !scrollRevealInitialized) return;
+
+    const initializeMobileMenuReveal = async () => {
+      const ScrollReveal = (await import('scrollreveal')).default;
+      const sr = ScrollReveal();
+      sr.reveal('.mobile-nav-item', { 
+        origin: 'right', 
+        distance: '20px', 
+        duration: 500, 
+        interval: 100 
+      });
+
+      return () => sr.destroy();
+    };
+
+    initializeMobileMenuReveal();
+  }, [mobileMenuOpen, scrollRevealInitialized]);
 
   const navLinks = [
     { label: 'Home', href: '#home', id: 'home' },
@@ -88,8 +101,8 @@ const Header = () => {
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
-  const scrollToSection = (id :any) => {
-    if (typeof window === 'undefined') return;
+  const scrollToSection = (id: any) => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
@@ -100,7 +113,7 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
-  const createActiveIndicator = (id:any) => {
+  const createActiveIndicator = (id: any) => {
     if (activeSection === id) {
       return (
         <div className="absolute -inset-1 -z-10 rounded-md bg-orange-100 dark:bg-orange-900/20">
@@ -127,7 +140,7 @@ const Header = () => {
       <div className="container flex items-center justify-between">
         <a 
           href="#home" 
-          className=" text-xl sm:text-2xl font-bold text-primary dark:text-orange-400"
+          className="text-xl sm:text-2xl font-bold text-primary dark:text-orange-400 nav-logo"
         >
           <span className="sr-only">Homepage</span>
           &lt;Ahmed is a Web Dev/&gt;
@@ -156,7 +169,6 @@ const Header = () => {
           ))}
           <ModeToggle/>
         </nav>
-
 
         <button
           className="mobile-menu md:hidden text-foreground dark:text-gray-200"
