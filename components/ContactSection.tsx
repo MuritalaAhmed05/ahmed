@@ -15,6 +15,7 @@ import {
   DialogFooter
 } from "@/components/ui/dialog";
 import { useScrollAnimations } from '@/lib/animations';
+import SpotlightCard from './ui/background';
 
 
 const ContactSection = () => {
@@ -92,6 +93,7 @@ const ContactSection = () => {
   ];
 
   return (
+    <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(245, 74, 0, 1)">
     <section id="contact" className="py-16 md:py-24 bg-gray-50 dark:bg-black/30">
       <div className="container mx-auto px-4">
         <div className="mb-12 flex flex-col justify-center items-center">
@@ -258,6 +260,7 @@ const ContactSection = () => {
         </DialogContent>
       </Dialog>
     </section>
+    </SpotlightCard>
   );
 };
 

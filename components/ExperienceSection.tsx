@@ -6,7 +6,6 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { Building, Calendar, ExternalLink } from "lucide-react";
 import { useScrollAnimations } from '@/lib/animations';
 
-
 interface ExperienceItem {
   title: string;
   company: string;
@@ -87,15 +86,13 @@ const ExperienceCard = ({ experience, index, isLast }: { experience: ExperienceI
       className="experience-card"
     >
       <Card className="relative overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-        {/* Timeline connector */}
         {!isLast && (
           <div className="absolute h-full w-0.5 bg-orange-200 dark:bg-orange-900/30 left-[28px] top-[76px] z-10 experience-timeline"></div>
         )}
         
-        {/* Timeline dot */}
         <div className="absolute w-6 h-6 rounded-full bg-orange-500 left-6 top-[60px] z-20 shadow-md shadow-orange-200 dark:shadow-orange-900/20 experience-dot"></div>
         
-        {/* Content with padding for timeline */}
+        
         <div className="ml-16">
           <CardHeader className="pb-3">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
@@ -188,12 +185,14 @@ const ExperienceSection = () => {
         
         <div className="space-y-8">
           {experiences.map((exp, index) => (
+
             <ExperienceCard 
               key={index} 
               experience={exp} 
               index={index} 
               isLast={index === experiences.length - 1} 
             />
+            
           ))}
         </div>
         

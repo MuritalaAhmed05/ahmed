@@ -23,7 +23,7 @@ const projects: ProjectProps[] = [
   {
     title: "Dynamic Illuminations",
     description: "A vibrant and dynamic platform showcasing creative light art installations with interactive elements and visual storytelling.",
-    technologies: ["Next.js", "TypeScript", "Three.js", "Tailwind CSS"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
     liveUrl: "https://dynamicilluminations.com.ng/",
     githubUrl: "#",
     imageUrl: "/dynamicilluminations.png",
@@ -32,7 +32,7 @@ const projects: ProjectProps[] = [
   {
     title: "VidGrab",
     description: "A powerful tool for downloading videos across multiple social media platforms with format selection and batch processing.",
-    technologies: ["React", "Node.js", "Express", "FFmpeg"],
+    technologies: ["NextJs", "Rest Api", "TypeScript", "Tailwind CSS"],
     liveUrl: "https://social-media-tool-kohl.vercel.app/",
     githubUrl: "#",
     imageUrl: "/localhost.png",
@@ -41,7 +41,7 @@ const projects: ProjectProps[] = [
   {
     title: "ShopEase",
     description: "A seamless e-commerce platform with product discovery, user authentication, cart management, and payment processing.",
-    technologies: ["Next.js", "TypeScript", "Redux", "Stripe"],
+    technologies: ["NextJs", "TypeScript", "Rest Api", "Tailwind CSS"],
     liveUrl: "https://shop-ease-gamma.vercel.app/",
     githubUrl: "#",
     imageUrl: "/image.png",
@@ -50,7 +50,7 @@ const projects: ProjectProps[] = [
   {
     title: "Quran App",
     description: "A digital platform for reading and exploring the Quran with translation, search functionality, and bookmarking features.",
-    technologies: ["React", "API Integration", "Styled Components", "IndexedDB"],
+    technologies: ["NextJs", "Rest Api", "TypeScript", "Tailwind CSS"],
     liveUrl: "https://quran-app-khaki.vercel.app/",
     githubUrl: "#",
     imageUrl: "/quran-app-khaki.png",
@@ -59,7 +59,7 @@ const projects: ProjectProps[] = [
   {
     title: "Weather App",
     description: "Accurate and up-to-date weather information with location detection, forecasting, and interactive weather maps.",
-    technologies: ["React", "Weather API", "Chart.js", "Geolocation"],
+    technologies: ["React", "Rest Api", "Tailwind CSS"],
     liveUrl: "https://weather-app-tau-mocha.vercel.app/",
     githubUrl: "#",
     imageUrl: "/weather-app-tau-mocha.png",
@@ -68,7 +68,7 @@ const projects: ProjectProps[] = [
   {
     title: "Chat App",
     description: "An interactive real-time chat application with user authentication, message encryption, and media sharing capabilities.",
-    technologies: ["React", "Firebase", "WebSockets", "Material UI"],
+    technologies: ["NextJs", "Firebase", "Tailwind CSS", "TypeScript"],
     liveUrl: "https://chat-app-nine-red.vercel.app/",
     githubUrl: "#",
     imageUrl: "/chat-app-nine-red.png",
