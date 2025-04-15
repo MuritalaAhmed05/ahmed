@@ -204,6 +204,6 @@
   scrollbar-width: thick;
   scrollbar-color: #fb923c #171717;
 }
-body{
+html, body{
   overflow-x: hidden;
 }
