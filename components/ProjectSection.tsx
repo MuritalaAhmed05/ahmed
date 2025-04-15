@@ -19,7 +19,6 @@ interface ProjectProps {
   featured?: boolean;
 }
 
-// Featured projects from the new list
 const projects: ProjectProps[] = [
   {
     title: "Dynamic Illuminations",
@@ -81,14 +80,11 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
   return (
     <article>
       <Card className="h-full overflow-hidden group border-gray-200 dark:border-gray-800 hover:border-orange-500 dark:hover:border-orange-400 transition-colors duration-300 project-card">
-        {/* Image Container */}
         <div className="relative aspect-video w-full overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
           <div className="w-full h-full bg-gray-200 dark:bg-gray-800 relative">
-            {/* Replace with actual image once available */}
             <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100 dark:bg-gray-800">
               <span className="text-sm">{project.imageUrl.replace('/', '')}</span>
-              {/* Uncomment when images are available */}
               <Image
                 src={project.imageUrl}
                 alt={`Screenshot of ${project.title} project`}
@@ -99,7 +95,6 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
             </div>
           </div>
       
-          {/* Technologies badges overlaid on image */}
           <div className="absolute bottom-2 left-2 right-2 z-20 flex flex-wrap gap-1.5 project-badges">
             {project.technologies.slice(0, 3).map((tech, index) => (
               <Badge key={index} className="bg-black/70 text-white hover:bg-black/80 backdrop-blur-sm text-xs">
@@ -170,7 +165,6 @@ const ProjectsSection = () => {
           ))}
         </div>
         
-        {/* View All Projects CTA */}
         <div className="mt-12 flex justify-center projects-cta">
           <Link href="/projects" passHref>
             <Button size="lg" className="group bg-gray-900 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 text-white">

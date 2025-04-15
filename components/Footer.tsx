@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { Heart, Github, Linkedin, Twitter, Mail, ArrowUp, Code } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useScrollAnimations } from '@/lib/animations';
 
 
@@ -50,7 +49,6 @@ const Footer = () => {
       
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-          {/* Brand & About */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100 contact-heading">Muritala Ahmed</h3>
             <div className="h-1 w-12 bg-orange-500 rounded-full mb-4 md:ml-0 mx-auto md:mx-0 contact-divider"></div>
@@ -73,8 +71,6 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
-          {/* Quick Links */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100 contact-heading">Quick Links</h3>
             <div className="h-1 w-12 bg-orange-500 rounded-full mb-4 md:ml-0 mx-auto md:mx-0 contact-divider"></div>
@@ -91,7 +87,6 @@ const Footer = () => {
             </nav>
           </div>
           
-          {/* Latest Projects */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100 contact-heading">Latest Projects</h3>
             <div className="h-1 w-12 bg-orange-500 rounded-full mb-4 md:ml-0 mx-auto md:mx-0 contact-divider"></div>
