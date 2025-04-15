@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDownCircle, Github, Linkedin, Twitter } from 'lucide-react';
 import { scrollAnimations } from '@/lib/animations';
+import Image from 'next/image';
 
 const HeroSection = () => {
   useEffect(() => {
@@ -78,11 +79,14 @@ const HeroSection = () => {
               {/* Image placeholder */}
               <div className="hero-image relative w-full h-full rounded-full border-4 border-orange-500/20 dark:border-orange-400/20 overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-500">
-                  <img 
-                    src="/Ahmed.jpg" 
-                    alt="Muritala Ahmed"
-                    className="w-full h-full object-cover"
-                  />
+                <Image
+
+  src="/Ahmed.jpg"
+  alt="Muritala Ahmed"
+  fill
+  className="object-cover rounded-full"
+/>
+
                 </div>
               </div>
 

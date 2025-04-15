@@ -41,6 +41,7 @@ const Footer = () => {
           onClick={scrollToTop}
           variant="outline"
           size="icon"
+           aria-label="Scroll to top"
           className="rounded-full h-10 w-10 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-400 transition-all"
         >
           <ArrowUp size={18} className="text-gray-700 dark:text-gray-300" />
@@ -64,7 +65,8 @@ const Footer = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="p-2 text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md social-link-item"
-                  aria-label={link.name}
+                  aria-label={`Follow me on ${link.name}`}
+                  
                 >
                   {link.icon}
                 </a>

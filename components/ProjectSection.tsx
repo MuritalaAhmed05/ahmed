@@ -78,62 +78,64 @@ const projects: ProjectProps[] = [
 
 const ProjectCard = ({ project }: { project: ProjectProps }) => {
   return (
-    <Card className="h-full overflow-hidden group border-gray-200 dark:border-gray-800 hover:border-orange-500 dark:hover:border-orange-400 transition-colors duration-300 project-card">
-      {/* Image Container */}
-      <div className="relative h-58 w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-        <div className="w-full h-full bg-gray-200 dark:bg-gray-800 relative">
-          {/* Replace with actual image once available */}
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100 dark:bg-gray-800">
-            <span className="text-sm">{project.imageUrl.replace('/', '')}</span>
-            {/* Uncomment when images are available */}
-            <Image
-              src={project.imageUrl}
-              alt={project.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500 project-image"
-            />
-           
+    <article>
+      <Card className="h-full overflow-hidden group border-gray-200 dark:border-gray-800 hover:border-orange-500 dark:hover:border-orange-400 transition-colors duration-300 project-card">
+        {/* Image Container */}
+        <div className="relative aspect-video w-full overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+          <div className="w-full h-full bg-gray-200 dark:bg-gray-800 relative">
+            {/* Replace with actual image once available */}
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100 dark:bg-gray-800">
+              <span className="text-sm">{project.imageUrl.replace('/', '')}</span>
+              {/* Uncomment when images are available */}
+              <Image
+                src={project.imageUrl}
+                alt={`Screenshot of ${project.title} project`}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500 project-image"
+              />
+      
+            </div>
+          </div>
+      
+          {/* Technologies badges overlaid on image */}
+          <div className="absolute bottom-2 left-2 right-2 z-20 flex flex-wrap gap-1.5 project-badges">
+            {project.technologies.slice(0, 3).map((tech, index) => (
+              <Badge key={index} className="bg-black/70 text-white hover:bg-black/80 backdrop-blur-sm text-xs">
+                {tech}
+              </Badge>
+            ))}
+            {project.technologies.length > 3 && (
+              <Badge className="bg-black/70 text-white hover:bg-black/80 backdrop-blur-sm text-xs">
+                +{project.technologies.length - 3}
+              </Badge>
+            )}
           </div>
         </div>
-        
-        {/* Technologies badges overlaid on image */}
-        <div className="absolute bottom-2 left-2 right-2 z-20 flex flex-wrap gap-1.5 project-badges">
-          {project.technologies.slice(0, 3).map((tech, index) => (
-            <Badge key={index} className="bg-black/70 text-white hover:bg-black/80 backdrop-blur-sm text-xs">
-              {tech}
-            </Badge>
-          ))}
-          {project.technologies.length > 3 && (
-            <Badge className="bg-black/70 text-white hover:bg-black/80 backdrop-blur-sm text-xs">
-              +{project.technologies.length - 3}
-            </Badge>
-          )}
-        </div>
-      </div>
       
-      <CardHeader className="pb-2 project-content">
-        <CardTitle className="text-xl flex items-center gap-2">
-          {project.title}
-        </CardTitle>
-        <CardDescription className="line-clamp-2">{project.description}</CardDescription>
-      </CardHeader>
+        <CardHeader className="pb-2 project-content">
+          <CardTitle className="text-xl flex items-center gap-2">
+            {project.title}
+          </CardTitle>
+          <CardDescription className="line-clamp-2">{project.description}</CardDescription>
+        </CardHeader>
       
-      <CardFooter className="flex justify-between pt-0 project-footer">
-        <Button variant="outline" size="sm" asChild className="border-gray-300 dark:border-gray-700 hover:border-orange-500 hover:text-orange-500 dark:hover:border-orange-400 dark:hover:text-orange-400">
-          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
-            <Github size={16} />
-            Code
-          </a>
-        </Button>
-        <Button size="sm" asChild className="bg-orange-500 hover:bg-orange-600 text-white">
-          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
-            <ExternalLink size={16} />
-            Live Demo
-          </a>
-        </Button>
-      </CardFooter>
-    </Card>
+        <CardFooter className="flex justify-between pt-0 project-footer">
+          <Button variant="outline" size="sm" asChild className="border-gray-300 dark:border-gray-700 hover:border-orange-500 hover:text-orange-500 dark:hover:border-orange-400 dark:hover:text-orange-400">
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
+              <Github size={16} />
+              Code
+            </a>
+          </Button>
+          <Button size="sm" asChild className="bg-orange-500 hover:bg-orange-600 text-white">
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
+              <ExternalLink size={16} />
+              Live Demo
+            </a>
+          </Button>
+        </CardFooter>
+      </Card>
+    </article>
   );
 };
 

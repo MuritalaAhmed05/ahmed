@@ -7,6 +7,7 @@ import {
   User, Award, Clock, Briefcase
 } from 'lucide-react';
 import { scrollAnimations } from '@/lib/animations';
+import Image from 'next/image';
 
 const AboutSection = () => {
   const techStack = [
@@ -45,11 +46,15 @@ const AboutSection = () => {
               <div className="aspect-[3/4] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden relative">
                 {/* Replace this with your actual image */}
                 <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600">
-                  <img 
-                    src="/Ahmed.jpg" 
-                    alt="Muritala Ahmed"
-                    className="w-full h-full object-cover"
-                  />
+                <Image
+  src="/Ahmed.jpg"
+  alt="Muritala Ahmed"
+  layout="fill"
+  objectFit="cover"
+  placeholder="blur"
+  blurDataURL="/Ahmed.jpg" 
+  className="rounded-lg"
+/>
                 </div>
                 
                 {/* Decorative elements */}
@@ -79,9 +84,9 @@ const AboutSection = () => {
             </div>
 
             <div className="about-tech-stack">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
                 My Tech Stack
-              </h3>
+              </h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {techStack.map((tech, index) => (
                   <Card 
@@ -91,6 +96,7 @@ const AboutSection = () => {
                     <CardContent className="flex flex-col items-center justify-center p-4">
                       <div className="text-orange-500 dark:text-orange-400 mb-3">
                         {tech.icon}
+                        <span className="sr-only">{tech.name}</span>
                       </div>
                       <span className="font-medium">{tech.name}</span>
                     </CardContent>

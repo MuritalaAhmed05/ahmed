@@ -1,3 +1,4 @@
+"use client"
 import ScrollReveal from 'scrollreveal';
 
 export const scrollAnimations = () => {

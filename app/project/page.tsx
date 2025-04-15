@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
-
+import { useRouter } from 'next/navigation';
 interface ProjectProps {
   title: string;
   description: string;
@@ -261,6 +261,7 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
 };
 
 const ProjectsPage = () => {
+  const router = useRouter();
   return (
     <>
       <div className="bg-gray-50 dark:bg-gray-900/30 py-16">
@@ -270,7 +271,7 @@ const ProjectsPage = () => {
       <Button 
         variant="ghost" 
         size="sm" 
-        onClick={() => window.location.href = "/#projects"}  
+        onClick={() => router.push('/#projects')} 
         className="flex items-center gap-2 hover:text-orange-500 -ml-2"
       >
         <ArrowLeft size={16} />
