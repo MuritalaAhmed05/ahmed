@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from 'lucide-react';
-import ScrollReveal from 'scrollreveal';
+// import ScrollReveal from 'scrollreveal';
 import { ModeToggle } from './toggleBtn';
 
 const Header = () => {
@@ -43,42 +43,42 @@ const Header = () => {
   }, []);
   
 
-  useEffect(() => {
-    const sr = ScrollReveal({
-      origin: 'top',
-      distance: '20px',
-      duration: 800,
-      delay: 100,
-      reset: false
-    });
+  // useEffect(() => {
+  //   const sr = ScrollReveal({
+  //     origin: 'top',
+  //     distance: '20px',
+  //     duration: 800,
+  //     delay: 100,
+  //     reset: false
+  //   });
 
-    sr.reveal('.nav-logo', { 
-      delay: 200 
-    });
+  //   sr.reveal('.nav-logo', { 
+  //     delay: 200 
+  //   });
     
-    sr.reveal('.nav-item', { 
-      interval: 100 
-    });
+  //   sr.reveal('.nav-item', { 
+  //     interval: 100 
+  //   });
     
-    sr.reveal('.mobile-menu', { 
-      origin: 'right',
-      distance: '40px'
-    });
+  //   sr.reveal('.mobile-menu', { 
+  //     origin: 'right',
+  //     distance: '40px'
+  //   });
     
-    return () => sr.destroy();
-  }, []);
+  //   return () => sr.destroy();
+  // }, []);
 
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      const sr = ScrollReveal();
-      sr.reveal('.mobile-nav-item', { 
-        origin: 'right', 
-        distance: '20px', 
-        duration: 500, 
-        interval: 100 
-      });
-    }
-  }, [mobileMenuOpen]);
+  // useEffect(() => {
+  //   if (mobileMenuOpen) {
+  //     const sr = ScrollReveal();
+  //     sr.reveal('.mobile-nav-item', { 
+  //       origin: 'right', 
+  //       distance: '20px', 
+  //       duration: 500, 
+  //       interval: 100 
+  //     });
+  //   }
+  // }, [mobileMenuOpen]);
 
   const navLinks = [
     { label: 'Home', href: '#home', id: 'home' },

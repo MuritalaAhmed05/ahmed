@@ -14,7 +14,7 @@ import {
   DialogTitle,
   DialogFooter
 } from "@/components/ui/dialog";
-import { scrollAnimations } from '@/lib/animations'; // Update the path as needed
+// import { scrollAnimations } from '@/lib/animations'; // Update the path as needed
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -29,9 +29,9 @@ const ContactSection = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Initialize ScrollReveal animations
-  useEffect(() => {
-    scrollAnimations();
-  }, []);
+  // useEffect(() => {
+  //   scrollAnimations();
+  // }, []);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;

@@ -2,13 +2,13 @@
 import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDownCircle, Github, Linkedin, Twitter } from 'lucide-react';
-import { scrollAnimations } from '@/lib/animations';
+// import { scrollAnimations } from '@/lib/animations';
 import Image from 'next/image';
 
 const HeroSection = () => {
-  useEffect(() => {
-    scrollAnimations();
-  }, []);
+  // useEffect(() => {
+  //   scrollAnimations();
+  // }, []);
 
   return (
     <section 

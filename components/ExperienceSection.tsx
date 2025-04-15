@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { Building, Calendar, ExternalLink } from "lucide-react";
-import { scrollAnimations } from '@/lib/animations';
+// import { scrollAnimations } from '@/lib/animations';
 
 interface ExperienceItem {
   title: string;
@@ -172,9 +172,9 @@ const ExperienceCard = ({ experience, index, isLast }: { experience: ExperienceI
 };
 
 const ExperienceSection = () => {
-  useEffect(() => {
-    scrollAnimations();
-  }, []);
+  // useEffect(() => {
+  //   scrollAnimations();
+  // }, []);
   
   return (
     <section id="experience" className="py-16 md:py-12 bg-gray-50 dark:bg-black/30">
