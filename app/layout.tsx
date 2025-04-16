@@ -13,23 +13,74 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Muritala Ahmed | Frontend Developer",
-  description: "Hi, I'm Muritala Ahmed — a passionate frontend developer crafting beautiful web experiences with Next.js, TypeScript, and Tailwind CSS.",
+// export const metadata: Metadata = {
+//   title: "Muritala Ahmed | Frontend Developer",
+//   description: "Hi, I'm Muritala Ahmed — a passionate frontend developer crafting beautiful web experiences with Next.js, TypeScript, and Tailwind CSS.",
+//   openGraph: {
+//     title: "Muritala Ahmed | Frontend Developer",
+//     description: "Hi, I'm Muritala Ahmed — a passionate frontend developer crafting beautiful web experiences with modern tools.",
+//     url: "https://yourdomain.com", 
+//     siteName: "Muritala Ahmed Portfolio",
+//     images: [
+//       {
+//         url: "https://files.catbox.moe/76nawh.png", 
+//         width: 1200,
+//         height: 630,
+//         alt: "Muritala Ahmed Portfolio",
+//       },
+//     ],
+//     type: "website",
+//   },
+// };
+export const metadata = {
+  metadataBase: new URL("https://ahmedisawebdev.vercel.app"),
+  // metadataBase: new URL("https://Muritala-Ahmed.is-a.dev/"),
+
+  title: {
+    template: "Muritala Ahmed | %s",
+    default: "Muritala Ahmed | Home",
+  },
+  description:
+    "Hey there! I'm Muritala Ahmed, a developer on a mission to craft engaging experiences through code. Welcome to my corner of the web!",
+  verification: {
+    // google: "-", // for vercel
+    google: "-", // for is-a.dev
+  },
+  referrer: "origin-when-cross-origin",
+  keywords: [
+    "Muritala",
+    "Alao",
+    "Ahmed",
+    "Muritala Alao",
+    "Muritala Ahmed",
+    "Muritala Alao Ahmed",
+    "Portfolio",
+    "Projects",
+    "Contact",
+    "Website",
+    "Portfolio Website",
+    "Muritala Ahmed Portfolio",
+    "Muritala Alao Portfolio",
+    "Muritala Ahmed Portfolio Website",
+    "Muritala Alao Ahmed Portfolio Website",
+  ],
+  authors: [
+    { name: "Ahmed" },
+    { name: "Muritala", url: "https://ahmedisawebdev.vercel.app" },
+    // { name: "Muritala", url: "https://Muritala-Ahmed.is-a.dev/" },
+  ],
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+      "de-DE": "/de-DE",
+    },
+  },
   openGraph: {
-    title: "Muritala Ahmed | Frontend Developer",
-    description: "Hi, I'm Muritala Ahmed — a passionate frontend developer crafting beautiful web experiences with modern tools.",
-    url: "https://yourdomain.com", 
-    siteName: "Muritala Ahmed Portfolio",
-    images: [
-      {
-        url: "https://files.catbox.moe/76nawh.png", 
-        width: 1200,
-        height: 630,
-        alt: "Muritala Ahmed Portfolio",
-      },
-    ],
-    type: "website",
+    images: "/opengraph-image.webp",
+    title: "Muritala Ahmed | Developer Extraordinaire",
+    description:
+      "Welcome to my digital hub! Explore my projects, journey, and passion for turning ideas into reality with code.",
   },
 };
 
