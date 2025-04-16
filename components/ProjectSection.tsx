@@ -22,59 +22,60 @@ interface ProjectProps {
 const projects: ProjectProps[] = [
   {
     title: "Dynamic Illuminations",
-    description: "A vibrant and dynamic platform showcasing creative light art installations with interactive elements and visual storytelling.",
-    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    description: "A modern website for a solar and inverter installation company, showcasing services and solutions for sustainable energy.",
+    technologies: ["React", "Tailwind CSS"],
     liveUrl: "https://dynamicilluminations.com.ng/",
-    githubUrl: "#",
+    githubUrl: "https://github.com/MuritalaAhmed05/Dynamic-illuminations-",
     imageUrl: "/dynamicilluminations.png",
     featured: true
   },
   {
-    title: "VidGrab",
-    description: "A powerful tool for downloading videos across multiple social media platforms with format selection and batch processing.",
-    technologies: ["NextJs", "Rest Api", "TypeScript", "Tailwind CSS"],
-    liveUrl: "https://social-media-tool-kohl.vercel.app/",
-    githubUrl: "#",
-    imageUrl: "/localhost.png",
+    title: "ShopEase",
+    description: "A demo shopping website built to test API integration skills. Users can view products and add them to the cart. Not fully functional.",
+    technologies: ["NextJs", "TypeScript", "FakeStore Api", "Tailwind CSS"],
+    liveUrl: "https://shop-ease-gamma.vercel.app/",
+    githubUrl: "https://github.com/MuritalaAhmed05/ShopEase",
+    imageUrl: "/shopease.png",
     featured: true
   },
   {
-    title: "ShopEase",
-    description: "A seamless e-commerce platform with product discovery, user authentication, cart management, and payment processing.",
-    technologies: ["NextJs", "TypeScript", "Rest Api", "Tailwind CSS"],
-    liveUrl: "https://shop-ease-gamma.vercel.app/",
-    githubUrl: "#",
-    imageUrl: "/image.png",
+    title: "Fancy Text",
+    description: "A fun tool for generating fancy and stylish text with multiple creative styles for use in social media, designs, or projects.",
+    technologies: ["NextJs", "Tailwind", "Rest Api"],
+    liveUrl: "https://fancy-text-delta.vercel.app/",
+    githubUrl: "https://github.com/MuritalaAhmed05/Fancy-Text",
+    imageUrl: "/fancy.png",
     featured: true
   },
   {
     title: "Quran App",
-    description: "A digital platform for reading and exploring the Quran with translation, search functionality, and bookmarking features.",
-    technologies: ["NextJs", "Rest Api", "TypeScript", "Tailwind CSS"],
+    description: "A digital Quran reader with translation and search functionality.",
+    technologies: ["NextJs", "Rest Api", "Tailwind CSS"],
     liveUrl: "https://quran-app-khaki.vercel.app/",
-    githubUrl: "#",
+    githubUrl: "https://github.com/MuritalaAhmed05/Quran-app",
     imageUrl: "/quran-app-khaki.png",
     featured: true
   },
   {
-    title: "Weather App",
-    description: "Accurate and up-to-date weather information with location detection, forecasting, and interactive weather maps.",
-    technologies: ["React", "Rest Api", "Tailwind CSS"],
-    liveUrl: "https://weather-app-tau-mocha.vercel.app/",
-    githubUrl: "#",
-    imageUrl: "/weather-app-tau-mocha.png",
+    title: "E-Photo",
+    description: "Enter any text and instantly generate a styled image using premade designs—ideal for quick creative outputs.",
+    technologies: ["NextJs", "TypeScript", "Rest Api", "Tailwind"],
+    liveUrl: "https://ephoto-kappa.vercel.app/",
+    githubUrl: "https://github.com/MuritalaAhmed05/ephoto",
+    imageUrl: "/e-photo.png",
     featured: true
   },
   {
-    title: "Chat App",
-    description: "An interactive real-time chat application with user authentication, message encryption, and media sharing capabilities.",
-    technologies: ["NextJs", "Firebase", "Tailwind CSS", "TypeScript"],
-    liveUrl: "https://chat-app-nine-red.vercel.app/",
-    githubUrl: "#",
-    imageUrl: "/chat-app-nine-red.png",
+    title: "Flimzy",
+    description: "A movie discovery app built during the HNG Internship using the TMDB API. Search, explore, and view details of trending films.",
+    technologies: ["NextJs", "TypeScript", "TMBD Api", "Tailwind"],
+    liveUrl: "https://flimzy.vercel.app/",
+    githubUrl: "https://github.com/MuritalaAhmed05/HNGx-stage8-movie-app",
+    imageUrl: "/flimzy.png",
     featured: true
-  }
+  },
 ];
+
 
 const ProjectCard = ({ project }: { project: ProjectProps }) => {
   return (

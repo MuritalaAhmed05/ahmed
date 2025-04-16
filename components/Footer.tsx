@@ -91,17 +91,17 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100 contact-heading">Latest Projects</h3>
             <div className="h-1 w-12 bg-orange-500 rounded-full mb-4 md:ml-0 mx-auto md:mx-0 contact-divider"></div>
             <div className="flex flex-col space-y-3 contact-info-container">
-              <a href="#project1" className="group text-sm flex items-center gap-2 contact-info-item">
-                <Code size={14} className="text-orange-500" />
-                <span className="text-gray-600 dark:text-gray-300 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">E-commerce Dashboard</span>
-              </a>
-              <a href="#project2" className="group text-sm flex items-center gap-2 contact-info-item">
-                <Code size={14} className="text-orange-500" />
-                <span className="text-gray-600 dark:text-gray-300 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Task Management App</span>
-              </a>
-              <a href="#project3" className="group text-sm flex items-center gap-2 contact-info-item">
+              <a href="https://ahmedisawebdev.vercel.app/" className="group text-sm flex items-center gap-2 contact-info-item">
                 <Code size={14} className="text-orange-500" />
                 <span className="text-gray-600 dark:text-gray-300 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Portfolio Website</span>
+              </a>
+              <a href="https://flimzy.vercel.app/" className="group text-sm flex items-center gap-2 contact-info-item">
+                <Code size={14} className="text-orange-500" />
+                <span className="text-gray-600 dark:text-gray-300 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Flimzy</span>
+              </a>
+              <a href="https://entertain-me-lime.vercel.app/" className="group text-sm flex items-center gap-2 contact-info-item">
+                <Code size={14} className="text-orange-500" />
+                <span className="text-gray-600 dark:text-gray-300 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Entertain Me</span>
               </a>
             </div>
           </div>
