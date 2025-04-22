@@ -44,7 +44,7 @@ export const metadata = {
     "Hey there! I'm Muritala Ahmed, a developer on a mission to craft engaging experiences through code. Welcome to my corner of the web!",
   verification: {
     // google: "-", // for vercel
-    google: "-", // for is-a.dev
+    google: "8W2KdbnsmX6v1yxvfA6MIweGEeAkd3DcnN5ji9LCANM", 
   },
   referrer: "origin-when-cross-origin",
   keywords: [
@@ -67,7 +67,6 @@ export const metadata = {
   authors: [
     { name: "Ahmed" },
     { name: "Muritala", url: "https://ahmedisawebdev.vercel.app" },
-    // { name: "Muritala", url: "https://Muritala-Ahmed.is-a.dev/" },
   ],
   alternates: {
     canonical: "/",
@@ -83,7 +82,6 @@ export const metadata = {
       "Welcome to my digital hub! Explore my projects, journey, and passion for turning ideas into reality with code.",
   },
 };
-
 
 export default function RootLayout({
   children,
