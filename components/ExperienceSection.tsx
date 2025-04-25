@@ -200,7 +200,7 @@ const ExperienceSection = () => {
           <p className="text-gray-600 dark:text-gray-300 italic">
             For a complete overview of my professional experience, please check my{" "}
             <a 
-              href="/resume.pdf" 
+              href="/Muritala_Ahmed_Resume.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-orange-500 hover:text-orange-600 transition-colors font-medium"

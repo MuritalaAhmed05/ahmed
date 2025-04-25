@@ -48,7 +48,8 @@ const HeroSection = () => {
                   className="border-orange-500 text-orange-500 hover:bg-orange-50 dark:border-orange-400 dark:text-orange-400 dark:hover:bg-gray-800"
                 >
                   <a
-                    href="/resume.pdf"
+                    href="/Muritala_Ahmed_Resume.pdf"
+                    download
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-orange-500 hover:text-orange-600 transition-colors font-medium"
