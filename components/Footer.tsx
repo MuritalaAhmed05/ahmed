@@ -117,7 +117,7 @@ const Footer = () => {
             
             <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 sm:contact-form-item">
               <span className="flex items-center">
-                <span>Designed and Developed Muritala Ahmed</span>
+                <span>Designed and Developed by Muritala Ahmed</span>
                 <Heart size={14} className="mx-1 text-red-500" />
 
               </span>
