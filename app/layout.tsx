@@ -13,74 +13,98 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "Muritala Ahmed | Frontend Developer",
-//   description: "Hi, I'm Muritala Ahmed — a passionate frontend developer crafting beautiful web experiences with Next.js, TypeScript, and Tailwind CSS.",
-//   openGraph: {
-//     title: "Muritala Ahmed | Frontend Developer",
-//     description: "Hi, I'm Muritala Ahmed — a passionate frontend developer crafting beautiful web experiences with modern tools.",
-//     url: "https://yourdomain.com", 
-//     siteName: "Muritala Ahmed Portfolio",
-//     images: [
-//       {
-//         url: "https://files.catbox.moe/76nawh.png", 
-//         width: 1200,
-//         height: 630,
-//         alt: "Muritala Ahmed Portfolio",
-//       },
-//     ],
-//     type: "website",
-//   },
-// };
+
 export const metadata = {
   metadataBase: new URL("https://ahmedisawebdev.vercel.app"),
-  // metadataBase: new URL("https://Muritala-Ahmed.is-a.dev/"),
 
   title: {
     template: "Muritala Ahmed | %s",
-    default: "Muritala Ahmed | Home",
+    default: "Muritala Ahmed",
   },
   description:
     "Hey there! I'm Muritala Ahmed, a developer on a mission to craft engaging experiences through code. Welcome to my corner of the web!",
   verification: {
-    // google: "-", // for vercel
     google: "8W2KdbnsmX6v1yxvfA6MIweGEeAkd3DcnN5ji9LCANM", 
   },
   referrer: "origin-when-cross-origin",
-  keywords: [
-    "Muritala",
-    "Alao",
-    "Ahmed",
-    "Muritala Alao",
-    "Muritala Ahmed",
-    "Muritala Alao Ahmed",
-    "Portfolio",
-    "Projects",
-    "Contact",
-    "Website",
-    "Portfolio Website",
-    "Muritala Ahmed Portfolio",
-    "Muritala Alao Portfolio",
-    "Muritala Ahmed Portfolio Website",
-    "Muritala Alao Ahmed Portfolio Website",
-  ],
+  keywords: 
+    [
+      "Muritala",
+      "Alao",
+      "Ahmed",
+      "Muritala Alao",
+      "Muritala Ahmed",
+      "Muritala Alao Ahmed",
+      "Muritala Ahmed Web Developer",
+      "Portfolio",
+      "Projects",
+      "Contact",
+      "Website",
+      "Portfolio Website",
+      "Muritala Ahmed Portfolio",
+      "Muritala Alao Portfolio",
+      "Muritala Ahmed Portfolio Website",
+      "Muritala Ahmed Frontend Developer",
+      "Muritala Ahmed Next.js Developer",
+      "Muritala Ahmed React Developer",
+      "Muritala Ahmed Nigeria",
+      "Muritala Ahmed Developer Portfolio",
+      "Frontend Developer in Nigeria",
+      "Next.js Portfolio Website",
+      "React.js Developer Portfolio",
+      "Tailwind CSS Portfolio",
+      "Web Developer Portfolio",
+      "Frontend Developer Portfolio",
+      "JavaScript Developer Portfolio",
+      "Software Engineer Portfolio",
+      "Muritala Ahmed Projects",
+      "Muritala Ahmed Contact",
+      "Ahmed Muritala Web Projects",
+      "Ahmed Is a Web Developer",
+      "Ahmed Is a Frontend Developer",
+      "Ahmed Is a Next.js Developer",
+      "Ahmed Is a web Dev",
+      "Ahmed Isa Portfolio",
+      "Muritala Ahmed Developer Website",
+      "Muritala Ahmed Online Portfolio",
+      "Hire Muritala Ahmed",
+      "Work with Muritala Ahmed",
+      "Best Frontend Developer in Nigeria",
+      "Modern Portfolio Developer",
+      "Creative Web Developer Nigeria",
+      "Freelance Frontend Developer",
+      "Ahmed Muritala Personal Website",
+      "Muritala Ahmed Github",
+      "Muritala Ahmed LinkedIn",
+      "Clean Developer Portfolio Design"
+    ],
+    
   authors: [
     { name: "Ahmed" },
     { name: "Muritala", url: "https://ahmedisawebdev.vercel.app" },
   ],
   alternates: {
-    canonical: "/",
+    canonical: "https://ahmedisawebdev.vercel.app",
     languages: {
       "en-US": "/en-US",
       "de-DE": "/de-DE",
     },
   },
   openGraph: {
-    images: "/opengraph-image.webp",
+    type: "website",
+    url: "https://ahmedisawebdev.vercel.app",
     title: "Muritala Ahmed | Developer Extraordinaire",
-    description:
-      "Welcome to my digital hub! Explore my projects, journey, and passion for turning ideas into reality with code.",
+    description: "Welcome to my digital hub! Explore my projects, journey, and passion for turning ideas into reality with code.",
+    images: [
+      {
+        url: "https://ahmedisawebdev.vercel.app/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Muritala Ahmed Portfolio",
+      },
+    ],
   },
+  
 };
 
 export default function RootLayout({

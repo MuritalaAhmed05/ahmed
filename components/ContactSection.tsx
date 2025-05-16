@@ -46,7 +46,6 @@ const ContactSection = () => {
     setSubmitError(false);
     
     try {
-      // Replace 'your-formspree-id' with your actual Formspree form ID
       const response = await fetch('https://formspree.io/f/xnnqveyy', {
         method: 'POST',
         body: JSON.stringify(formData),
@@ -67,7 +66,6 @@ const ContactSection = () => {
           message: '',
         });
         
-        // Hide the success alert after 5 seconds
         setTimeout(() => {
           setSubmitSuccess(false);
         }, 5000);

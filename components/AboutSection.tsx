@@ -40,9 +40,9 @@ const AboutSection = () => {
           <span className="text-sm font-medium text-orange-500 dark:text-orange-400 uppercase tracking-wider mb-3">
             Get to know me
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold relative">
+          <h2 className="text-3xl md:text-4xl mb-4 font-bold relative">
             About Me
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-orange-500 dark:bg-orange-400 rounded-full mt-2"></span>
+            <span className="absolute bottom-[-1rem] left-1/2 transform -translate-x-1/2 w-12 h-1 bg-orange-500 dark:bg-orange-400 rounded-full mt-4"></span>
           </h2>
         </div>
 
