@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Github, Linkedin, Twitter, Mail, CheckCircle, Loader2, X } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, CheckCircle, Loader2, X, Send, MapPin, Clock, MessageSquare, Copy, Check } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -14,8 +14,7 @@ import {
   DialogTitle,
   DialogFooter
 } from "@/components/ui/dialog";
-import { useScrollAnimations } from '@/lib/animations';
-
+import { motion } from 'framer-motion';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -28,11 +27,9 @@ const ContactSection = () => {
   const [submitError, setSubmitError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
 
- 
-  useScrollAnimations();
-
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -40,7 +37,13 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const copyEmail = () => {
+    navigator.clipboard.writeText('muritalaahmed407@gmail.com');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(false);
@@ -83,172 +86,235 @@ const ContactSection = () => {
   };
 
   const socialLinks = [
-    { name: 'GitHub', icon: <Github size={20} />, url: 'https://github.com/MuritalaAhmed05' },
-    { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://www.linkedin.com/in/ahmed-dahdev' },
-    { name: 'Twitter', icon: <Twitter size={20} />, url: 'https://x.com/ahmed_muri50344?s=09' },
-    { name: 'Email', icon: <Mail size={20} />, url: 'mailto:muritalaahmed407@gmail.com' },
+    { name: 'GitHub', icon: <Github size={18} />, url: 'https://github.com/MuritalaAhmed05', label: '@MuritalaAhmed05' },
+    { name: 'LinkedIn', icon: <Linkedin size={18} />, url: 'https://www.linkedin.com/in/ahmed-dahdev', label: 'Ahmed Dahdev' },
+    { name: 'Twitter', icon: <Twitter size={18} />, url: 'https://x.com/ahmeddahdev?s=09', label: '@ahmeddahdev' },
+    { name: 'Email', icon: <Mail size={18} />, url: 'mailto:muritalaahmed407@gmail.com', label: 'muritalaahmed407@gmail.com' },
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gray-50 dark:bg-black/30">
-      <div className="container mx-auto px-4">
-        <div className="mb-12 flex flex-col justify-center items-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 contact-heading">Get In Touch</h2>
-          <div className="h-1 w-20 bg-orange-500 rounded-full mb-8 contact-divider"></div>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl text-center contact-description">
-            I'm currently open to new opportunities and collaborations. Whether you have a question or just want to say hello, I'll try my best to get back to you!
+    <section id="contact" className="py-20 md:py-32 relative overflow-hidden bg-gray-50/30 dark:bg-black/40">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <span className="text-xs font-mono font-bold text-orange-500 uppercase tracking-widest px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-3 flex items-center gap-1.5">
+            <MessageSquare size={14} />
+            GET IN TOUCH
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+            Let's Build Something <span className="gradient-text-orange">Great</span>
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mt-4 mb-4" />
+          <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed">
+            I am currently open to full-time roles, freelance projects, and tech collaborations. Reach out using the form below or find me on social media!
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-white dark:bg-neutral-900 rounded-xl p-8 shadow-md border border-gray-200 dark:border-gray-700 contact-form-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Form Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 glass-card p-6 sm:p-10 rounded-2xl border border-gray-200/60 dark:border-white/10 shadow-xl"
+          >
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+              Send Me a Message
+              <Send size={18} className="text-orange-500" />
+            </h3>
+
             {submitSuccess && (
-              <Alert className="mb-6 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
+              <Alert className="mb-6 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 rounded-xl">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-500" size={18} />
-                  <AlertDescription className="text-green-700 text-nowrap dark:text-green-300">
-                    Message sent successfully! I'll get back to you soon.
+                  <CheckCircle size={18} />
+                  <AlertDescription className="text-sm font-medium">
+                    Message sent successfully! I'll get back to you within 24 hours.
                   </AlertDescription>
                 </div>
               </Alert>
             )}
             
             {submitError && (
-              <Alert className="mb-6 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800">
+              <Alert className="mb-6 bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 rounded-xl">
                 <div className="flex items-center gap-2">
-                  <X className="text-red-500" size={18} />
-                  <AlertDescription className="text-red-700 text-nowrap dark:text-red-300">
+                  <X size={18} />
+                  <AlertDescription className="text-sm font-medium">
                     {errorMessage}
                   </AlertDescription>
                 </div>
               </Alert>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="contact-form-item">
-                <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
-                  Name
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="name" className="block text-xs font-mono font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                  Your Name
                 </label>
                 <Input
                   id="name"
                   name="name"
-                  placeholder="Your name"
+                  placeholder="e.g. John Doe"
                   value={formData.name}
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="bg-gray-50 dark:bg-black/10 border-gray-300 dark:border-gray-700 focus:ring-orange-500 focus:border-orange-500"
+                  className="glass-card bg-white/50 dark:bg-black/30 border-gray-200 dark:border-white/10 rounded-xl py-5 focus:ring-orange-500 focus:border-orange-500"
                 />
               </div>
               
-              <div className="contact-form-item">
-                <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
-                  Email
+              <div>
+                <label htmlFor="email" className="block text-xs font-mono font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                  Your Email
                 </label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="Your email"
+                  placeholder="e.g. john@example.com"
                   value={formData.email}
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="bg-gray-50 dark:bg-black/10 border-gray-300 dark:border-gray-700 focus:ring-orange-500 focus:border-orange-500"
+                  className="glass-card bg-white/50 dark:bg-black/30 border-gray-200 dark:border-white/10 rounded-xl py-5 focus:ring-orange-500 focus:border-orange-500"
                 />
               </div>
               
-              <div className="contact-form-item">
-                <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
-                  Message
+              <div>
+                <label htmlFor="message" className="block text-xs font-mono font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                  Your Message
                 </label>
                 <Textarea
                   id="message"
                   name="message"
-                  placeholder="Your message"
+                  placeholder="Tell me about your project or inquiry..."
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
                   required
                   disabled={isSubmitting}
-                  className="bg-gray-50 dark:bg-black/10 border-gray-300 dark:border-gray-700 focus:ring-orange-500 focus:border-orange-500"
+                  className="glass-card bg-white/50 dark:bg-black/30 border-gray-200 dark:border-white/10 rounded-xl focus:ring-orange-500 focus:border-orange-500"
                 />
               </div>
               
-              <div className="contact-form-item">
-                <Button 
-                  type="submit" 
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white" 
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <Loader2 className="animate-spin" size={16} />
-                      Sending...
-                    </span>
-                  ) : "Send Message"}
-                </Button>
-              </div>
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-6 rounded-xl shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.01]"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <Loader2 className="animate-spin" size={18} />
+                    Sending Message...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <Send size={16} />
+                    Send Message
+                  </span>
+                )}
+              </Button>
             </form>
-          </div>
+          </motion.div>
 
-          <div className="contact-info-container">
-            <h3 className="text-xl font-semibold mb-6 contact-heading-secondary">Connect With Me</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          {/* Right Column: Social Links & Contact Details */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-5 space-y-6"
+          >
+            {/* Quick Copy Email Pill */}
+            <div className="glass-card p-5 rounded-2xl border border-gray-200/60 dark:border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3 overflow-hidden">
+                <div className="p-2.5 rounded-xl bg-orange-500/10 text-orange-500 shrink-0">
+                  <Mail size={20} />
+                </div>
+                <div className="truncate">
+                  <p className="text-[11px] font-mono text-muted-foreground uppercase">Direct Email</p>
+                  <p className="text-sm font-bold text-foreground truncate">muritalaahmed407@gmail.com</p>
+                </div>
+              </div>
+
+              <button
+                onClick={copyEmail}
+                className="px-3 py-1.5 rounded-xl bg-orange-500/10 hover:bg-orange-500 text-orange-600 dark:text-orange-400 hover:text-white font-mono text-xs transition-all flex items-center gap-1.5 shrink-0"
+              >
+                {emailCopied ? (
+                  <>
+                    <Check size={14} />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy size={14} />
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Social Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {socialLinks.map((link, index) => (
-                <Card key={index} className="overflow-hidden border-gray-200 dark:border-gray-800 hover:border-orange-500 dark:hover:border-orange-400 transition-colors duration-300 social-link-item">
-                  <CardContent className="p-4">
-                    <a 
-                      href={link.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="flex items-center gap-3 text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
-                    >
-                      <span className="text-orange-500">{link.icon}</span>
-                      <span>{link.name}</span>
-                    </a>
-                  </CardContent>
-                </Card>
+                <a 
+                  key={index}
+                  href={link.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="glass-card glass-card-hover p-4 rounded-xl border border-gray-200/60 dark:border-white/10 flex items-center gap-3 text-foreground hover:text-orange-500 transition-all"
+                >
+                  <div className="p-2 rounded-lg bg-orange-500/10 text-orange-500">
+                    {link.icon}
+                  </div>
+                  <div className="truncate">
+                    <p className="text-xs font-bold">{link.name}</p>
+                    <p className="text-[11px] text-muted-foreground font-mono truncate">{link.label}</p>
+                  </div>
+                </a>
               ))}
             </div>
-            
-            <div className="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 contact-info-card">
-              <div className="contact-info-item">
-                <h4 className="font-medium mb-2 text-gray-900 dark:text-gray-100">Location</h4>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">Lagos, Nigeria</p>
+
+            {/* Availability & Location Card */}
+            <div className="glass-card p-6 rounded-2xl border border-gray-200/60 dark:border-white/10 space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="text-orange-500 shrink-0 mt-1" size={18} />
+                <div>
+                  <h4 className="font-bold text-sm text-foreground">Location</h4>
+                  <p className="text-xs text-muted-foreground mt-0.5">Lagos, Nigeria (Available for Remote Worldwide)</p>
+                </div>
               </div>
-              
-              <div className="contact-info-item">
-                <h4 className="font-medium mb-2 text-gray-900 dark:text-gray-100">Availability</h4>
-                <p className="text-gray-600 dark:text-gray-400">Open to remote work and freelance opportunities</p>
-              </div>
-              
-              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 contact-info-divider">
-                <h4 className="font-medium mb-2 text-gray-900 dark:text-gray-100 contact-info-item">Response Time</h4>
-                <p className="text-gray-600 dark:text-gray-400 contact-info-item">Usually within 24-48 hours</p>
+
+              <div className="flex items-start gap-3 pt-3 border-t border-gray-100 dark:border-white/5">
+                <Clock className="text-orange-500 shrink-0 mt-1" size={18} />
+                <div>
+                  <h4 className="font-bold text-sm text-foreground">Response Time</h4>
+                  <p className="text-xs text-muted-foreground mt-0.5">Usually replies within 24 hours</p>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Success Modal */}
+      {/* Success Modal Dialog */}
       <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md glass-card border border-emerald-500/30">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <CheckCircle className="text-green-500" size={20} />
-              Message Sent Successfully
+            <DialogTitle className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold">
+              <CheckCircle size={22} />
+              Message Sent Successfully!
             </DialogTitle>
-            <DialogDescription className="pt-2">
-              Thank you for your message. I've received it and will respond as soon as possible — typically within 24 to 48 hours.
+            <DialogDescription className="pt-2 text-sm text-muted-foreground leading-relaxed">
+              Thank you for reaching out. Your message has been sent directly to Muritala Ahmed. I will review it and get back to you shortly!
             </DialogDescription>
           </DialogHeader>
 
-          <DialogFooter className="sm:justify-center">
+          <DialogFooter className="sm:justify-center pt-2">
             <Button 
               onClick={() => setShowSuccessModal(false)}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 rounded-xl"
             >
               Close
             </Button>

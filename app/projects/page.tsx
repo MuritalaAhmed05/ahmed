@@ -1,12 +1,12 @@
-"use client"
-import React from 'react';
+"use client";
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowLeft } from 'lucide-react';
+import { ExternalLink, Github, ArrowLeft, Search, Sparkles, FolderGit2, X } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useScrollAnimations } from '@/lib/animations';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface ProjectProps {
   title: string;
@@ -30,8 +30,8 @@ const allProjects: ProjectProps[] = [
   },
   {
     title: "ShopEase",
-    description: "A demo shopping website built to test API integration skills. Users can view products and add them to the cart. Not fully functional.",
-    technologies: ["NextJs", "TypeScript", "FakeStore Api", "Tailwind CSS"],
+    description: "A demo shopping website built to test API integration skills. Users can view products and add them to the cart.",
+    technologies: ["Next.js", "TypeScript", "FakeStore API", "Tailwind CSS"],
     liveUrl: "https://shop-ease-gamma.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/ShopEase",
     imageUrl: "/shopease.png",
@@ -39,8 +39,8 @@ const allProjects: ProjectProps[] = [
   },
   {
     title: "Fancy Text",
-    description: "A fun tool for generating fancy and stylish text with multiple creative styles for use in social media, designs, or projects.",
-    technologies: ["NextJs", "Tailwind", "Rest Api"],
+    description: "A fun tool for generating fancy and stylish text with multiple creative styles for social media & designs.",
+    technologies: ["Next.js", "Tailwind CSS", "REST API"],
     liveUrl: "https://fancy-text-delta.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/Fancy-Text",
     imageUrl: "/fancy.png",
@@ -48,8 +48,8 @@ const allProjects: ProjectProps[] = [
   },
   {
     title: "Quran App",
-    description: "A digital Quran reader with translation and search functionality.",
-    technologies: ["NextJs", "Rest Api", "Tailwind CSS"],
+    description: "A digital Quran reader with translation, audio features, and fast search functionality.",
+    technologies: ["Next.js", "REST API", "Tailwind CSS"],
     liveUrl: "https://quran-app-khaki.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/Quran-app",
     imageUrl: "/quran-app-khaki.png",
@@ -57,8 +57,8 @@ const allProjects: ProjectProps[] = [
   },
   {
     title: "E-Photo",
-    description: "Enter any text and instantly generate a styled image using premade designs—ideal for quick creative outputs.",
-    technologies: ["NextJs", "TypeScript", "Rest Api", "Tailwind"],
+    description: "Enter any text and instantly generate styled images using premade designs—ideal for quick creative outputs.",
+    technologies: ["Next.js", "TypeScript", "REST API", "Tailwind CSS"],
     liveUrl: "https://ephoto-kappa.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/ephoto",
     imageUrl: "/e-photo.png",
@@ -66,8 +66,8 @@ const allProjects: ProjectProps[] = [
   },
   {
     title: "Flimzy",
-    description: "A movie discovery app built during the HNG Internship using the TMDB API. Search, explore, and view details of trending films.",
-    technologies: ["NextJs", "TypeScript", "TMBD Api", "Tailwind"],
+    description: "A movie discovery app built during the HNG Internship using TMDB API. Search, explore, and view trending films.",
+    technologies: ["Next.js", "TypeScript", "TMDB API", "Tailwind CSS"],
     liveUrl: "https://flimzy.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/HNGx-stage8-movie-app",
     imageUrl: "/flimzy.png",
@@ -76,7 +76,7 @@ const allProjects: ProjectProps[] = [
   {
     title: "VidGrab",
     description: "A tool for downloading videos across social media platforms with format selection and batch processing.",
-    technologies: ["NextJs", "Rest API", "Shadcn Ui" , "Tailwind CSS"],
+    technologies: ["Next.js", "REST API", "Shadcn UI", "Tailwind CSS"],
     liveUrl: "https://social-media-tool-kohl.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/social-media-tool",
     imageUrl: "/localhost.png",
@@ -85,7 +85,7 @@ const allProjects: ProjectProps[] = [
   {
     title: "Quiz App",
     description: "An interactive app for taking quizzes to test your knowledge with scoring and progress tracking.",
-    technologies: ["NextJS", "TypeScript", "Firebase", "Tailwind CSS"],
+    technologies: ["Next.js", "TypeScript", "Firebase", "Tailwind CSS"],
     liveUrl: "https://brainstorm-lilac-three.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/brainstorm",
     imageUrl: "/quiz.png"
@@ -93,24 +93,23 @@ const allProjects: ProjectProps[] = [
   {
     title: "Meme Creator",
     description: "A fun tool for designing and sharing your own memes with ease, featuring text overlays and templates.",
-    technologies: ["NextJS", "Rest API", "TypeScript", "Tailwind CSS"],
+    technologies: ["Next.js", "REST API", "TypeScript", "Tailwind CSS"],
     liveUrl: "https://meme-creator-eta.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/meme-creator",
     imageUrl: "/mem.png"
   },
   {
     title: "Entertain Me",
-    description: "Generate all kinds of fun content—jokes, flirts, insults, riddles, truth or dare challenges, and more—perfect for laughs and good vibes.",
-    technologies: ["NextJS", "Rest API", "Tailwind CSS"],
+    description: "Generate all kinds of fun content—jokes, flirts, insults, riddles, truth or dare challenges, and more.",
+    technologies: ["Next.js", "REST API", "Tailwind CSS"],
     liveUrl: "https://entertain-me-lime.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/EntertainMe",
     imageUrl: "/entertain.png"
   },
- 
   {
     title: "WebFullshot",
     description: "A powerful tool for capturing full-page website screenshots effortlessly with sharing capabilities.",
-    technologies: ["NextJs", "Rest API", "Tailwind CSS"],
+    technologies: ["Next.js", "REST API", "Tailwind CSS"],
     liveUrl: "https://webshot-six.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/webshot",
     imageUrl: "/webshot.png"
@@ -118,16 +117,15 @@ const allProjects: ProjectProps[] = [
   {
     title: "Prayer Time",
     description: "An app that lets you input your location to get accurate daily prayer times.",
-    technologies: ["NextJs", "Rest API", "TypeScript"],
+    technologies: ["Next.js", "REST API", "TypeScript"],
     liveUrl: "https://prayer-time-umber.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/prayer-time",
     imageUrl: "/prayer.png"
   },
-  
   {
     title: "Portfolio Showcase",
-    description: "This is my portfolio where I showcase my personal and professional projects, with filters to explore by category.",
-    technologies: ["React", "Tailwind CSS", "AOS", "JavaScript"],
+    description: "A showcase portfolio of personal & client projects, built with smooth transitions and responsive UI.",
+    technologies: ["React", "Tailwind CSS", "JavaScript"],
     liveUrl: "https://portfolio-psi-taupe-53.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/Portfolio",
     imageUrl: "/portfolio-psi-taupe-53.png"
@@ -135,16 +133,15 @@ const allProjects: ProjectProps[] = [
   {
     title: "URL Shortener",
     description: "A simple tool to shorten long URLs—just paste your link and get a short version instantly.",
-    technologies: ["NextJs", "Tiny Url API", "Tailwind CSS"],
+    technologies: ["Next.js", "REST API", "Tailwind CSS"],
     liveUrl: "https://url-shortener-azure-theta.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/url-shortener",
     imageUrl: "/url-shortener.png"
   },
- 
   {
     title: "Lyrics Finder",
     description: "Discover song lyrics with a clean and intuitive interface and artist information.",
-    technologies: ["React", "Lyrics API", "Tailwind CSS"],
+    technologies: ["React", "REST API", "Tailwind CSS"],
     liveUrl: "https://lyrics-finder-six.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/lyrics-finder",
     imageUrl: "/lyrics-finder-six.png"
@@ -152,7 +149,7 @@ const allProjects: ProjectProps[] = [
   {
     title: "QR Code Generator",
     description: "Generate QR codes for any URL/Text with seamless functionality and customization options.",
-    technologies: ["React", "QR Code API", "Tailwind CSS", ],
+    technologies: ["React", "REST API", "Tailwind CSS"],
     liveUrl: "https://qr-code-generator-flame-sigma.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/qr-code-generator",
     imageUrl: "/qr-code-generator-flame-sigma.png"
@@ -160,7 +157,7 @@ const allProjects: ProjectProps[] = [
   {
     title: "Currency Converter",
     description: "Convert between currencies with real-time exchange rates and historical data.",
-    technologies: ["NextJS", "Exchange Rate API", "Tailwind CSS"],
+    technologies: ["Next.js", "REST API", "Tailwind CSS"],
     liveUrl: "https://currency-converter-wine-nu.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/currency-converter",
     imageUrl: "/currency-converter-wine-nu.png"
@@ -168,7 +165,7 @@ const allProjects: ProjectProps[] = [
   {
     title: "Weather App",
     description: "Accurate and up-to-date weather information with forecasting and location services.",
-    technologies: ["NextJs", "Weather API", "Tailwind CSS", "Geolocation"],
+    technologies: ["Next.js", "REST API", "Tailwind CSS", "Geolocation"],
     liveUrl: "https://weather-app-tau-mocha.vercel.app/",
     githubUrl: "https://github.com/MuritalaAhmed05/weather-app",
     imageUrl: "/weather-app-tau-mocha.png",
@@ -260,70 +257,76 @@ const allProjects: ProjectProps[] = [
     imageUrl: "/nexus.png",
     featured: true
   }
-  
-  
-  
-  
-  
 ];
 
 const ProjectCard = ({ project }: { project: ProjectProps }) => {
   return (
-    <Card className="h-full overflow-hidden group border-gray-200 dark:border-gray-800 hover:border-orange-500 dark:hover:border-orange-400 transition-colors duration-300 project-card">
-      <div className="relative aspect-video w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-        <div className="w-full h-full bg-gray-200 dark:bg-gray-800 relative">
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100 dark:bg-gray-800">
-            <span className="text-sm">{project.imageUrl.replace('/', '')}</span>
-            <Image
-              src={project.imageUrl}
-              alt={project.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500 project-image"
-            />
-           
+    <Card className="glass-card glass-card-hover h-full flex flex-col justify-between overflow-hidden group border border-gray-200/60 dark:border-white/10 rounded-2xl">
+      <div>
+        <div className="relative aspect-video w-full overflow-hidden bg-gray-900">
+          <Image
+            src={project.imageUrl}
+            alt={project.title}
+            fill
+            className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+
+          {project.featured && (
+            <div className="absolute top-3 left-3 z-10">
+              <Badge className="bg-orange-500/90 text-white font-mono text-[10px] uppercase tracking-wider backdrop-blur-md px-2.5 py-1">
+                Featured
+              </Badge>
+            </div>
+          )}
+
+          <div className="absolute bottom-3 left-3 right-3 z-10 flex flex-wrap gap-1.5">
+            {project.technologies.slice(0, 3).map((tech, i) => (
+              <span
+                key={i}
+                className="px-2 py-0.5 rounded-md bg-black/70 text-white/90 backdrop-blur-md text-[11px] font-mono border border-white/10"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 3 && (
+              <span className="px-2 py-0.5 rounded-md bg-black/70 text-white/90 backdrop-blur-md text-[11px] font-mono border border-white/10">
+                +{project.technologies.length - 3}
+              </span>
+            )}
           </div>
         </div>
-        
-        <div className="absolute bottom-2 left-2 right-2 z-20 flex flex-wrap gap-1.5">
-          {project.technologies.slice(0, 3).map((tech, index) => (
-            <Badge key={index} className="bg-black/70 text-white hover:bg-black/80 backdrop-blur-sm text-xs">
-              {tech}
-            </Badge>
-          ))}
-          {project.technologies.length > 3 && (
-            <Badge className="bg-black/70 text-white hover:bg-black/80 backdrop-blur-sm text-xs project-badges">
-              +{project.technologies.length - 3}
-            </Badge>
-          )}
-        </div>
+
+        <CardHeader className="p-5 pb-2">
+          <CardTitle className="text-xl font-bold tracking-tight text-foreground group-hover:text-orange-500 transition-colors">
+            {project.title}
+          </CardTitle>
+          <CardDescription className="text-xs sm:text-sm text-muted-foreground line-clamp-2 leading-relaxed mt-1">
+            {project.description}
+          </CardDescription>
+        </CardHeader>
       </div>
-      
-      <CardHeader className="pb-2 project-content">
-        <CardTitle className="text-xl flex items-center gap-2">
-          {project.title}
-          {project.featured && (
-            <Badge variant="outline" className="ml-2 border-orange-500 text-orange-500 dark:border-orange-400 dark:text-orange-400">
-              Featured
-            </Badge>
-          )}
-        </CardTitle>
-        <CardDescription className="line-clamp-2">{project.description}</CardDescription>
-      </CardHeader>
-      
-      <CardFooter className="flex justify-between pt-0 project-footer">
-        <Button variant="outline" size="sm" asChild className="border-gray-300 dark:border-gray-700 hover:border-orange-500 hover:text-orange-500 dark:hover:border-orange-400 dark:hover:text-orange-400">
-          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
-            <Github size={16} />
-            Code
-          </a>
-        </Button>
-        <Button size="sm" asChild className="bg-orange-500 hover:bg-orange-600 text-white">
-          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
-            <ExternalLink size={16} />
-            Live Demo
-          </a>
-        </Button>
+
+      <CardFooter className="p-5 pt-3 flex items-center justify-between border-t border-gray-100 dark:border-white/5 mt-4">
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800"
+        >
+          <Github size={16} />
+          <span>Code</span>
+        </a>
+
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-500/20 transition-all hover:scale-105"
+        >
+          <span>Live Demo</span>
+          <ExternalLink size={14} />
+        </a>
       </CardFooter>
     </Card>
   );
@@ -331,50 +334,149 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
 
 const ProjectsPage = () => {
   const router = useRouter();
-  useScrollAnimations()
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const categories = ['All', 'Next.js', 'React', 'REST API', 'JavaScript'];
+
+  const filteredProjects = useMemo(() => {
+    return allProjects.filter((project) => {
+      const matchesSearch =
+        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.technologies.some((tech) => tech.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      const matchesCategory =
+        activeCategory === 'All' ||
+        project.technologies.some((tech) => tech.toLowerCase().includes(activeCategory.toLowerCase()));
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, activeCategory]);
+
   return (
-    <>
-      {/* Fixed back button */}
-      <div className="fixed top-4 left-4 z-10">
+    <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
+      {/* Floating Back Button */}
+      <div className="fixed top-6 left-6 z-50">
         <Button 
-          variant="ghost" 
+          variant="outline" 
           size="sm" 
           onClick={() => router.push('/#projects')} 
-          className="flex items-center gap-2 hover:text-orange-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm rounded-full px-4 py-2"
+          className="glass-card hover:bg-orange-500 hover:text-white text-foreground border-gray-300 dark:border-white/10 rounded-full px-4 py-2 font-mono text-xs flex items-center gap-2 shadow-lg transition-all"
         >
           <ArrowLeft size={16} />
-          Back
+          <span>Back to Home</span>
         </Button>
       </div>
-      
-      <div className="bg-gray-50 dark:bg-gray-900/30 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">My Projects</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              A comprehensive collection of my web development work, showcasing my skills, creativity, and problem-solving abilities.
-            </p>
+
+      {/* Header Banner */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 text-center">
+        <span className="text-xs font-mono font-bold text-orange-500 uppercase tracking-widest px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-3 inline-flex items-center gap-1.5">
+          <FolderGit2 size={14} />
+          ALL WORKS DIRECTORY
+        </span>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
+          Complete <span className="gradient-text-orange">Project Archive</span>
+        </h1>
+        <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          Explore all {allProjects.length} web applications, utilities, and client works engineered by Muritala Ahmed.
+        </p>
+      </div>
+
+      {/* Filter Controls Bar */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-10 space-y-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Search Box */}
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} />
+            <input
+              type="text"
+              placeholder="Search projects or technologies..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full glass-card pl-10 pr-9 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-xs sm:text-sm focus:ring-orange-500 focus:border-orange-500 outline-none"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </div>
+
+          {/* Category Tabs */}
+          <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto bg-gray-100 dark:bg-neutral-900/60 p-1.5 rounded-2xl border border-gray-200/60 dark:border-white/10">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
+                  activeCategory === cat
+                    ? 'bg-orange-500 text-white font-bold shadow-md shadow-orange-500/20'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-gray-200/50 dark:hover:bg-neutral-800'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
         </div>
-      </div>
-      
-      <div className="container mx-auto px-4 py-12">
-        <div className="mb-6 flex items-center">
-          <Badge variant="outline" className="px-3 py-1">
-            {allProjects.length} Projects
-          </Badge>
+
+        {/* Counter Pill */}
+        <div className="flex items-center justify-between text-xs font-mono text-muted-foreground px-1">
+          <span>Showing {filteredProjects.length} of {allProjects.length} projects</span>
+          {(searchQuery || activeCategory !== 'All') && (
+            <button
+              onClick={() => {
+                setSearchQuery('');
+                setActiveCategory('All');
+              }}
+              className="text-orange-500 hover:underline"
+            >
+              Reset Filters
+            </button>
+          )}
         </div>
-        
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 projects-grid">
-          {allProjects.map((project, index) => (
-            <div key={index}>
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
       </div>
-    </>
+
+      {/* Projects Grid */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {filteredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.04 }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="glass-card p-12 rounded-2xl border border-dashed border-gray-300 dark:border-white/10 text-center max-w-md mx-auto my-12">
+            <Sparkles size={32} className="text-orange-500 mx-auto mb-3" />
+            <h3 className="text-lg font-bold">No Projects Found</h3>
+            <p className="text-xs text-muted-foreground mt-1 mb-4">
+              No project matched your search "{searchQuery}" or filter "{activeCategory}".
+            </p>
+            <Button
+              onClick={() => {
+                setSearchQuery('');
+                setActiveCategory('All');
+              }}
+              size="sm"
+              className="bg-orange-500 text-white rounded-xl font-bold"
+            >
+              Clear Filters
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
