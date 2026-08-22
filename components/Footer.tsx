@@ -30,7 +30,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="pt-16 pb-8 bg-gray-100/80 dark:bg-black border-t border-gray-200 dark:border-white/10 relative">
+    <footer className="pt-10 pb-6 bg-gray-100/80 dark:bg-black border-t border-gray-200 dark:border-white/10 relative">
       {/* Scroll to top button */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Button 

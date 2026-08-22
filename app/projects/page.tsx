@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowLeft, Search, Sparkles, FolderGit2, X } from 'lucide-react';
+import { ExternalLink, Github, ArrowLeft, Search, FolderGit2, X } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -297,24 +297,24 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
           </div>
         </div>
 
-        <CardHeader className="p-5 pb-2">
-          <CardTitle className="text-xl font-bold tracking-tight text-foreground group-hover:text-orange-500 transition-colors">
+        <CardHeader className="p-4 pb-1.5">
+          <CardTitle className="text-lg font-bold tracking-tight text-foreground group-hover:text-orange-500 transition-colors">
             {project.title}
           </CardTitle>
-          <CardDescription className="text-xs sm:text-sm text-muted-foreground line-clamp-2 leading-relaxed mt-1">
+          <CardDescription className="text-xs text-muted-foreground line-clamp-2 leading-relaxed mt-1">
             {project.description}
           </CardDescription>
         </CardHeader>
       </div>
 
-      <CardFooter className="p-5 pt-3 flex items-center justify-between border-t border-gray-100 dark:border-white/5 mt-4">
+      <CardFooter className="p-4 pt-2.5 flex items-center justify-between border-t border-gray-100 dark:border-white/5 mt-2">
         <a
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800"
         >
-          <Github size={16} />
+          <Github size={15} />
           <span>Code</span>
         </a>
 
@@ -322,10 +322,10 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-500/20 transition-all hover:scale-105"
+          className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white shadow-sm transition-all hover:scale-105"
         >
           <span>Live Demo</span>
-          <ExternalLink size={14} />
+          <ExternalLink size={13} />
         </a>
       </CardFooter>
     </Card>
@@ -378,6 +378,12 @@ const ProjectsPage = () => {
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
           Complete <span className="gradient-text-orange">Project Archive</span>
         </h1>
+        {/* Signature Archive Directory Ribbon Underline */}
+        <div className="flex items-center justify-center gap-1.5 my-3">
+          <div className="w-2 h-2 rounded-xs bg-orange-500 rotate-45" />
+          <div className="w-16 h-1.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full shadow-md shadow-orange-500/30" />
+          <div className="w-2 h-2 rounded-xs bg-orange-500 rotate-45" />
+        </div>
         <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
           Explore all {allProjects.length} web applications, utilities, and client works engineered by Muritala Ahmed.
         </p>
@@ -414,7 +420,7 @@ const ProjectsPage = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
                   activeCategory === cat
-                    ? 'bg-orange-500 text-white font-bold shadow-md shadow-orange-500/20'
+                    ? 'bg-orange-600 text-white font-bold shadow-md shadow-orange-500/20'
                     : 'text-muted-foreground hover:text-foreground hover:bg-gray-200/50 dark:hover:bg-neutral-800'
                 }`}
               >
@@ -458,7 +464,7 @@ const ProjectsPage = () => {
           </div>
         ) : (
           <div className="glass-card p-12 rounded-2xl border border-dashed border-gray-300 dark:border-white/10 text-center max-w-md mx-auto my-12">
-            <Sparkles size={32} className="text-orange-500 mx-auto mb-3" />
+            <FolderGit2 size={32} className="text-orange-500 mx-auto mb-3" />
             <h3 className="text-lg font-bold">No Projects Found</h3>
             <p className="text-xs text-muted-foreground mt-1 mb-4">
               No project matched your search "{searchQuery}" or filter "{activeCategory}".
@@ -469,7 +475,7 @@ const ProjectsPage = () => {
                 setActiveCategory('All');
               }}
               size="sm"
-              className="bg-orange-500 text-white rounded-xl font-bold"
+              className="bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-bold"
             >
               Clear Filters
             </Button>

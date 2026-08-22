@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowRight, Sparkles, FolderGit2 } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, FolderGit2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -116,25 +116,25 @@ const ProjectCard = ({ project, index }: { project: ProjectProps; index: number 
           </div>
 
           {/* Card Header & Content */}
-          <CardHeader className="p-5 pb-2">
-            <CardTitle className="text-xl font-bold tracking-tight text-foreground group-hover:text-orange-500 transition-colors">
+          <CardHeader className="p-4 pb-1.5">
+            <CardTitle className="text-lg font-bold tracking-tight text-foreground group-hover:text-orange-500 transition-colors">
               {project.title}
             </CardTitle>
-            <CardDescription className="text-xs sm:text-sm text-muted-foreground line-clamp-2 leading-relaxed mt-1">
+            <CardDescription className="text-xs text-muted-foreground line-clamp-2 leading-relaxed mt-1">
               {project.description}
             </CardDescription>
           </CardHeader>
         </div>
 
         {/* Card Footer Actions */}
-        <CardFooter className="p-5 pt-3 flex items-center justify-between border-t border-gray-100 dark:border-white/5 mt-4">
+        <CardFooter className="p-4 pt-2.5 flex items-center justify-between border-t border-gray-100 dark:border-white/5 mt-2">
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800"
           >
-            <Github size={16} />
+            <Github size={15} />
             <span>Code</span>
           </a>
 
@@ -142,10 +142,10 @@ const ProjectCard = ({ project, index }: { project: ProjectProps; index: number 
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-500/20 transition-all hover:scale-105"
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white shadow-sm transition-all hover:scale-105"
           >
             <span>Live Demo</span>
-            <ExternalLink size={14} />
+            <ExternalLink size={13} />
           </a>
         </CardFooter>
       </Card>
@@ -155,7 +155,10 @@ const ProjectCard = ({ project, index }: { project: ProjectProps; index: number 
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-20 md:py-32 relative overflow-hidden bg-gray-50/30 dark:bg-black/20">
+    <section id="projects" className="py-12 md:py-16 relative overflow-hidden bg-gray-50/30 dark:bg-black/20">
+      {/* Ambient spotlights */}
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
@@ -166,7 +169,12 @@ const ProjectsSection = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
             Featured <span className="gradient-text-orange">Projects</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mt-4 mb-4" />
+          {/* Signature Bracketed Diamond Ribbon Underline */}
+          <div className="flex items-center justify-center gap-2 mt-4 mb-4">
+            <div className="w-2 h-2 rounded-xs bg-orange-500 rotate-45 shadow-sm shadow-orange-500/50" />
+            <div className="w-16 h-1.5 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-400 rounded-full shadow-md shadow-orange-500/30" />
+            <div className="w-2 h-2 rounded-xs bg-orange-500 rotate-45 shadow-sm shadow-orange-500/50" />
+          </div>
           <p className="text-sm sm:text-base text-muted-foreground max-w-xl leading-relaxed">
             A curated selection of modern web applications showcasing full-stack integration, responsive layout engineering, and API design.
           </p>
@@ -184,7 +192,7 @@ const ProjectsSection = () => {
           <Link href="/projects" passHref>
             <Button
               size="lg"
-              className="group glass-card hover:bg-orange-500 hover:text-white text-foreground border-orange-500/30 font-bold rounded-xl px-8 py-6 shadow-lg transition-all hover:scale-105"
+              className="group bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-xl px-8 py-6 shadow-md transition-all hover:scale-105"
             >
               <span>Explore All 28+ Projects</span>
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />

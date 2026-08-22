@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Menu, X, Sparkles, Code2 } from "lucide-react";
+import { Menu, X, MessageSquare, Code2 } from "lucide-react";
 import { ModeToggle } from "./toggleBtn";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -116,7 +116,7 @@ const Header = () => {
           }}
           className="group flex items-center gap-2 text-base sm:text-lg font-bold tracking-tight text-foreground transition-all"
         >
-          <div className="w-9 h-9 rounded-xl bg-orange-500/10 dark:bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-500 group-hover:scale-105 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+          <div className="hidden sm:flex w-9 h-9 rounded-xl bg-orange-500/10 dark:bg-orange-500/20 border border-orange-500/30 items-center justify-center text-orange-500 group-hover:scale-105 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
             <Code2 size={20} />
           </div>
           <span className="font-mono sm:text-xl text-sm">
@@ -148,7 +148,7 @@ const Header = () => {
                 {isActive && (
                   <motion.div
                     layoutId="activeNavTab"
-                    className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full -z-10 shadow-sm shadow-orange-500/30"
+                    className="absolute inset-0 bg-orange-600 rounded-full -z-10 shadow-sm shadow-orange-500/30"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -169,12 +169,14 @@ const Header = () => {
               }}
               className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-xl bg-orange-500/10 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500 dark:hover:text-white border border-orange-500/30 transition-all duration-200"
             >
-              <Sparkles size={14} />
+              <MessageSquare size={14} />
               Let's Talk
             </a>
           </div>
 
-          <ModeToggle />
+          <div className="hidden sm:block">
+            <ModeToggle />
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -195,7 +197,7 @@ const Header = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="md:hidden max-w-6xl mx-auto mt-2 p-4 glass-card rounded-2xl border border-white/20 dark:border-white/10 shadow-xl"
+            className="md:hidden max-w-6xl mx-auto mt-2 p-5 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-2xl rounded-2xl border border-gray-200 dark:border-neutral-800 shadow-2xl"
           >
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => {
@@ -222,7 +224,11 @@ const Header = () => {
                 );
               })}
               <div className="pt-3 mt-2 border-t border-gray-200 dark:border-neutral-800 flex items-center justify-between px-2">
-                <span className="text-xs text-muted-foreground font-mono">Status: Open for opportunities</span>
+                <span className="text-xs text-muted-foreground font-mono">Theme Mode</span>
+                <ModeToggle />
+              </div>
+              <div className="pt-2 flex items-center justify-between px-2">
+                <span className="text-xs text-muted-foreground font-mono">Status: Available for Hire</span>
                 <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               </div>
             </nav>
