@@ -13,7 +13,7 @@ import {
   Briefcase,
   Award,
   Clock,
-  Sparkles,
+  FolderGit2,
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
@@ -48,14 +48,18 @@ const AboutSection = () => {
       desc: "Building production apps",
     },
     {
-      icon: <Sparkles className="h-5 w-5 text-amber-500" />,
+      icon: <FolderGit2 className="h-5 w-5 text-amber-500" />,
       title: "28+ Projects",
       desc: "Live web applications",
     },
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 relative overflow-hidden bg-gray-50/50 dark:bg-black/40">
+    <section id="about" className="py-12 md:py-16 relative overflow-hidden bg-gray-50/50 dark:bg-black/40">
+      {/* Background ambient glows */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 h-72 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-orange-500/10 rounded-full blur-[110px] pointer-events-none -z-10" />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col items-center mb-16 text-center">
@@ -65,7 +69,11 @@ const AboutSection = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
             About <span className="gradient-text-orange">Me</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mt-4" />
+          {/* Signature Offset Ribbon Underline */}
+          <div className="relative mt-4 flex items-center justify-center">
+            <div className="w-20 h-1.5 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-400 rounded-full shadow-md shadow-orange-500/30" />
+            <div className="absolute -bottom-2 w-8 h-0.5 bg-orange-400/80 rounded-full" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -174,14 +182,14 @@ const AboutSection = () => {
             </div>
 
             {/* CTA Banner */}
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl shadow-orange-500/20">
+            <div className="p-6 rounded-2xl bg-neutral-900 dark:bg-neutral-900 border border-neutral-800 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
               <div>
                 <h4 className="text-lg font-bold">Have a project in mind?</h4>
-                <p className="text-xs text-white/90">Let's build something extraordinary together.</p>
+                <p className="text-xs text-gray-300">Let's build something impactful together.</p>
               </div>
               <a
                 href="#contact"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white text-orange-600 hover:bg-gray-100 font-bold text-xs uppercase tracking-wider transition-all shadow-md text-center flex items-center justify-center gap-2 shrink-0"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md text-center flex items-center justify-center gap-2 shrink-0"
               >
                 <span>Get In Touch</span>
                 <ArrowRight size={14} />

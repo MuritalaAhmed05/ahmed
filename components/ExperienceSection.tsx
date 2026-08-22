@@ -59,7 +59,10 @@ const experiences: ExperienceItem[] = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-20 md:py-28 relative overflow-hidden bg-gray-50/50 dark:bg-black/30">
+    <section id="experience" className="py-12 md:py-16 relative overflow-hidden bg-gray-50/50 dark:bg-black/30">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 left-10 w-72 h-72 bg-orange-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
@@ -70,7 +73,14 @@ const ExperienceSection = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
             Work <span className="gradient-text-orange">Experience</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mt-4 mb-4" />
+          {/* Signature Timeline Beam Underline */}
+          <div className="flex items-center justify-center gap-2.5 mt-4 mb-4">
+            <div className="w-10 h-0.5 bg-orange-500/60 rounded-full" />
+            <div className="w-4 h-4 rounded-full border border-orange-500 bg-orange-500/10 flex items-center justify-center shadow-sm shadow-orange-500/30">
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+            </div>
+            <div className="w-10 h-0.5 bg-orange-500/60 rounded-full" />
+          </div>
           <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed">
             My professional journey in software development, showcasing key contributions, skills gained, and engineering impact.
           </p>
